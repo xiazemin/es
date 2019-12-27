@@ -49,7 +49,7 @@
   * [倒排索引](chapter5/dao-pai-suo-yin.md)
   * [数据查询](chapter5/shu-ju-cha-xun.md)
   * [ES在Ad Tracking的应用](chapter5/eszai-ad-tracking-de-ying-yong.md)
-* [chapter6](chapter6.md)
+* [深入理解Elasticsearch](chapter6.md)
   * [section1](chapter6/section1.md)
 * [chapter7](chapter7.md)
 * [chapter8](chapter8.md)
