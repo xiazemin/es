@@ -5,7 +5,7 @@
   * [ElasticSearch配置](chapter1/section1.md)
   * [Elasticsearch 配置文件详解](chapter1/section2.md)
   * [Elasticsearch常用插件](chapter1/section3.md)
-  * [section4](chapter1/section4.md)
+  * [Elasticsearch 的fielddata内存控制、预加载以及circuit breaker断路器](chapter1/section4.md)
   * [section5](chapter1/section5.md)
   * [section6](chapter1/section6.md)
   * [section7](chapter1/section7.md)
