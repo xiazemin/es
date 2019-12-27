@@ -41,6 +41,7 @@
     * [动态索引](chapter4/section4/dong-tai-suo-yin.md)
     * [删除和更新](chapter4/section4/shan-chu-he-geng-xin.md)
     * [持久化变更](chapter4/section4/chi-jiu-hua-bian-geng.md)
+    * [合并段](chapter4/section4/he-bing-duan.md)
 * [chapter5](chapter5.md)
   * [section1](chapter5/section1.md)
   * [section2](chapter5/section2.md)
