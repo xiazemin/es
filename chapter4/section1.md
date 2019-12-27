@@ -22,5 +22,49 @@
 
 我们给出一个通过Hive sql创建索引的例子:
 
+drop table search.goods\_index;  
 
+CREATE EXTERNAL TABLE search.goods\_index \(  
+
+    is\_virtual int,
+
+    created\_time string,
+
+    update\_time string,
+
+    title string,
+
+    tag\_ids array&lt;int&gt;
+
+  \) STORED BY 'org.elasticsearch.hadoop.hive.EsStorageHandler' TBLPROPERTIES \(
+
+    'es.batch.size.bytes'='1mb',
+
+    'es.batch.size.entries'='0',
+
+    'es.batch.write.refresh'='false',
+
+    'es.batch.write.retry.count'='3',
+
+    'es.mapping.id'='id',
+
+    'es.write.operation'='index',
+
+    'es.nodes'='192.168.1.10:9200',
+
+    'es.resource'='goods/goods'\);
+
+系统把es映射成hive的一个外部表, 更新索引就像是写入一个hive表一样. 实际上所有分布式问题都被系统透明了.
+
+
+
+不建议从数据库或文件系统来全量索引. 一方面这会对业务系统造成很大的压力, 另一方面因为数据库和文件系统都不是真正分布式系统, 自己写程序保证全量索引的水平扩展性很容易出问题, 也没有必要这么做.
+
+
+
+全量索引和增量索引的架构如下图所示. 另外一点是hadoop也是订阅kafka备份数据库和日志的. 我个人建议一个公司所有DB和文件都存储在hadoop上, 这样做起码有2个好处: 1. hadoop上使用hive或者spark创建的数据仓库为大数据提供统一的操作接口.
+
+2. hadoop数据相对于线上更加稳定, 可以作为数据恢复的最后一个防线.
+
+数据仓库的话题不在本篇文章的讨论范围, 这里只是简单提一下.
 
