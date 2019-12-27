@@ -24,7 +24,7 @@
     * [Curator使用指南](chapter2/section5/curatorshi-yong-zhi-nan.md)
   * [Elasticsearch 中的跨集群复制](chapter2/section6.md)
     * [跨集群复制技术简介](chapter2/section6/kua-ji-qun-fu-zhi-ji-zhu-jian-jie.md)
-* [chapter3](chapter3.md)
+* [Elasticsearch 的 44 条建议](chapter3.md)
   * [section1](chapter3/section1.md)
   * [section2](chapter3/section2.md)
   * [section3](chapter3/section3.md)
