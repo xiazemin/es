@@ -18,30 +18,63 @@
 
 图1：内存缓存区有新文档的Lucene索引
 
-
-
 ![](https://user-gold-cdn.xitu.io/2018/8/23/16564dcd1e5e11c8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-
 
 Lucene允许新段写入打开，好让它们包括的文档可搜索，而不用执行一次全量提交。这是比提交更轻量的过程，可以经常操作，而不会影响性能。
 
 图2：缓存内容已经写到段中，但是还没提交
 
-
-
 ![](https://user-gold-cdn.xitu.io/2018/8/23/16564dd33aea3e71?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-
 
 ### refeash API
 
 在Elesticsearch中，这种写入打开一个新段的轻量级过程，叫做refresh。默认情况下，每个分片每秒自动刷新一次。这就是为什么说Elasticsearch是近实时的搜索了：文档的改动不会立即被搜索，但是会在一秒内可见。
 
-  
+这会困扰新用户：他们索引了个文档，尝试搜索它，但是搜不到。解决办法就是执行一次手动刷新，通过API:
+
+POST /\_refresh &lt;1&gt;
+
+POST /blogs/\_refresh &lt;2&gt;
+
+复制代码
+
+&lt;1&gt; refresh所有索引
+
+&lt;2&gt; 只refresh 索引blogs
+
+不是所有的用户都需要每秒刷新一次。也许你使用ES索引百万日志文件，你更想要优化索引的速度，而不是进实时搜索。你可以通过修改配置项refresh\_interval减少刷新的频率：
+
+  PUT /my\_logs
+
+{
+
+  "settings": {
+
+    "refresh\_interval": "30s" &lt;1&gt;
+
+  }
+
+}
+
+复制代码
+
+&lt;1&gt; 每30s refresh一次my\_logs
+
+refresh\_interval可以在存在的索引上动态更新。你在创建大索引的时候可以关闭自动刷新，在要使用索引的时候再打开它。
+
+PUT /my\_logs/\_settings
+
+{ "refresh\_interval": -1 } &lt;1&gt;
 
 
 
+PUT /my\_logs/\_settings
 
+{ "refresh\_interval": "1s" } &lt;2&gt;
 
+复制代码
+
+&lt;1&gt; 禁用所有自动refresh
+
+&lt;2&gt; 每秒自动refresh
 
