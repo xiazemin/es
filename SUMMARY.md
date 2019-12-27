@@ -26,7 +26,7 @@
     * [跨集群复制技术简介](chapter2/section6/kua-ji-qun-fu-zhi-ji-zhu-jian-jie.md)
 * [Elasticsearch 的 44 条建议](chapter3.md)
   * [创建索引过程](chapter3/section1.md)
-  * [section2](chapter3/section2.md)
+  * [Elasticsearch性能优化](chapter3/section2.md)
   * [section3](chapter3/section3.md)
   * [section4](chapter3/section4.md)
   * [section5](chapter3/section5.md)
