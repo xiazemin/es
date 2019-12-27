@@ -1,5 +1,11 @@
 # Introduction
 
+书籍
+
+[https://es.xiaoleilu.com/075\_Inside\_a\_shard/60\_Segment\_merging.html](https://es.xiaoleilu.com/075_Inside_a_shard/60_Segment_merging.html)
+
+
+
 **一、ElasticSearch使用场景**  
 **存储**  
 ElasticSearch天然支持分布式，具备存储海量数据的能力，其搜索和数据分析的功能都建立在ElasticSearch存储的海量的数据之上；ElasticSearch很方便的作为海量数据的存储工具，特别是在数据量急剧增长的当下，ElasticSearch结合爬虫等数据收集工具可以发挥很大用处
