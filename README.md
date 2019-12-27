@@ -4,7 +4,7 @@
 
 [https://es.xiaoleilu.com/075\_Inside\_a\_shard/60\_Segment\_merging.html](https://es.xiaoleilu.com/075_Inside_a_shard/60_Segment_merging.html)
 
-
+[https://www.elastic.co/guide/cn/elasticsearch/guide/current/merge-process.html](https://www.elastic.co/guide/cn/elasticsearch/guide/current/merge-process.html)
 
 **一、ElasticSearch使用场景**  
 **存储**  
