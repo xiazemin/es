@@ -36,7 +36,7 @@
   * [section1](chapter4/section1.md)
   * [段合并](chapter4/section2.md)
   * [索引合并](chapter4/section3.md)
-  * [section4](chapter4/section4.md)
+  * [分片](chapter4/section4.md)
 * [chapter5](chapter5.md)
   * [section1](chapter5/section1.md)
   * [section2](chapter5/section2.md)
