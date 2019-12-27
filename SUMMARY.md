@@ -30,7 +30,7 @@
   * [原始文档存储](chapter3/section3.md)
   * [ES 如何做到几十亿数据检索 3 秒返回](chapter3/section4.md)
   * [如何物理删除给定期限的历史数据](chapter3/section5.md)
-  * [section6](chapter3/section6.md)
+  * [ELK在广告系统监控中的应用](chapter3/section6.md)
   * [section7](chapter3/section7.md)
 * [chapter4](chapter4.md)
   * [section1](chapter4/section1.md)
