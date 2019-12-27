@@ -20,7 +20,7 @@
     * [写索引原理](chapter2/section3/xie-suo-yin-yuan-li.md)
     * [存储原理](chapter2/section3/cun-chu-yuan-li.md)
   * [Elasticsearch优化性能的措施](chapter2/section4.md)
-  * [section5](chapter2/section5.md)
+  * [Curator](chapter2/section5.md)
   * [section6](chapter2/section6.md)
 * [chapter3](chapter3.md)
   * [section1](chapter3/section1.md)
