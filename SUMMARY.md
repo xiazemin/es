@@ -18,6 +18,7 @@
   * [Elasticsearch集群健康状态](chapter2/section2.md)
   * [Elasticsearch 机制原理](chapter2/section3.md)
     * [写索引原理](chapter2/section3/xie-suo-yin-yuan-li.md)
+    * [存储原理](chapter2/section3/cun-chu-yuan-li.md)
   * [section4](chapter2/section4.md)
   * [section5](chapter2/section5.md)
   * [section6](chapter2/section6.md)
