@@ -5,8 +5,9 @@
 几个概念：
 
 * 内存buffer
- 
+
 * translog
+
 * 文件系统缓冲区
 * refresh
 * segment（段）
@@ -72,4 +73,32 @@ segment的不可变性的好处
 通过添加版本号的乐观锁机制保证高并发的时候，数据更新不会出现线程安全的问题，避免数据更新被覆盖之类的异常出现。
 
 使用内部版本号：删除或者更新数据的时候，携带\_version参数，如果文档的最新版本不是这个版本号，那么操作会失败，这个版本号是ES内部自动生成的，每次操作之后都会递增一。
+
+PUT /website/blog/1?version=1 
+
+{
+
+  "title": "My first blog entry",
+
+  "text":  "Starting to get the hang of this..."
+
+}
+
+使用外部版本号：ES默认采用递增的整数作为版本号，也可以通过外部自定义整数（long类型）作为版本号，例如时间戳。通过添加参数version\_type=external，可以使用自定义版本号。内部版本号使用的时候，更新或者删除操作需要携带ES索引当前最新的版本号，匹配上了才能成功操作。但是外部版本号使用的时候，可以将版本号更新为指定的值。
+
+
+
+PUT /website/blog/2?version=5&version\_type=external
+
+{
+
+  "title": "My first external blog entry",
+
+  "text":  "Starting to get the hang of this..."
+
+}
+
+原始文档存储（行式存储）
+
+
 
