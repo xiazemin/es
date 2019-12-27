@@ -31,7 +31,7 @@
   * [ES 如何做到几十亿数据检索 3 秒返回](chapter3/section4.md)
   * [如何物理删除给定期限的历史数据](chapter3/section5.md)
   * [ELK在广告系统监控中的应用](chapter3/section6.md)
-  * [section7](chapter3/section7.md)
+  * [Elasticsearch 集群](chapter3/section7.md)
 * [chapter4](chapter4.md)
   * [section1](chapter4/section1.md)
   * [section2](chapter4/section2.md)
