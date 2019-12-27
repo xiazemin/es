@@ -11,6 +11,7 @@
   * [Elasticserach内存优化](chapter1/section7.md)
   * [Elasticserach存储优化](chapter1/elasticserachcun-chu-you-hua.md)
   * [Elasticserach搜索速度优化](chapter1/elasticserachsou-suo-su-du-you-hua.md)
+  * [Elasticserach写入性能优化](chapter1/elasticserachxie-ru-xing-neng-you-hua.md)
 * [chapter2](chapter2.md)
   * [section1](chapter2/section1.md)
   * [section2](chapter2/section2.md)
