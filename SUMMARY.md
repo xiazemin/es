@@ -16,7 +16,7 @@
 * [ElasticSearch运维手册](chapter2.md)
   * [Elasticsearch 是如何做到分布式，可扩展和近实时搜索的](chapter2/section1.md)
   * [Elasticsearch集群健康状态](chapter2/section2.md)
-  * [section3](chapter2/section3.md)
+  * [Elasticsearch 机制原理](chapter2/section3.md)
   * [section4](chapter2/section4.md)
   * [section5](chapter2/section5.md)
   * [section6](chapter2/section6.md)
