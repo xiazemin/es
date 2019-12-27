@@ -40,6 +40,7 @@
     * [不可变性](chapter4/section4/bu-ke-bian-xing.md)
     * [动态索引](chapter4/section4/dong-tai-suo-yin.md)
     * [删除和更新](chapter4/section4/shan-chu-he-geng-xin.md)
+    * [持久化变更](chapter4/section4/chi-jiu-hua-bian-geng.md)
 * [chapter5](chapter5.md)
   * [section1](chapter5/section1.md)
   * [section2](chapter5/section2.md)
