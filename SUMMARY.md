@@ -45,6 +45,7 @@
 * [原理到应用](chapter5.md)
   * [架构](chapter5/section1.md)
   * [负载均衡](chapter5/section2.md)
+  * [数据写入](chapter5/shu-ju-xie-ru.md)
 * [chapter6](chapter6.md)
   * [section1](chapter6/section1.md)
 * [chapter7](chapter7.md)
