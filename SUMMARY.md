@@ -3,7 +3,7 @@
 * [Introduction](README.md)
 * [ElasticSearch核心概念](chapter1.md)
   * [ElasticSearch配置](chapter1/section1.md)
-  * [section2](chapter1/section2.md)
+  * [Elasticsearch 配置文件详解](chapter1/section2.md)
   * [section3](chapter1/section3.md)
   * [section4](chapter1/section4.md)
   * [section5](chapter1/section5.md)
