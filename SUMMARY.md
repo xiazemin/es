@@ -15,7 +15,7 @@
   * [Elasticserach审计优化](chapter1/elasticserachshen-ji-you-hua.md)
 * [ElasticSearch运维手册](chapter2.md)
   * [Elasticsearch 是如何做到分布式，可扩展和近实时搜索的](chapter2/section1.md)
-  * [section2](chapter2/section2.md)
+  * [Elasticsearch集群健康状态](chapter2/section2.md)
   * [section3](chapter2/section3.md)
   * [section4](chapter2/section4.md)
   * [section5](chapter2/section5.md)
