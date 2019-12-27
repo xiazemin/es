@@ -22,7 +22,7 @@
   * [Elasticsearch优化性能的措施](chapter2/section4.md)
   * [Curator](chapter2/section5.md)
     * [Curator使用指南](chapter2/section5/curatorshi-yong-zhi-nan.md)
-  * [section6](chapter2/section6.md)
+  * [Elasticsearch 中的跨集群复制](chapter2/section6.md)
 * [chapter3](chapter3.md)
   * [section1](chapter3/section1.md)
   * [section2](chapter3/section2.md)
