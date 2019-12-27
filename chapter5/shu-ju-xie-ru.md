@@ -9,6 +9,7 @@
 * translog
 
 * 文件系统缓冲区
+
 * refresh
 * segment（段）
 * commit
@@ -74,31 +75,101 @@ segment的不可变性的好处
 
 使用内部版本号：删除或者更新数据的时候，携带\_version参数，如果文档的最新版本不是这个版本号，那么操作会失败，这个版本号是ES内部自动生成的，每次操作之后都会递增一。
 
-PUT /website/blog/1?version=1 
+PUT /website/blog/1?version=1
 
 {
 
-  "title": "My first blog entry",
+"title": "My first blog entry",
 
-  "text":  "Starting to get the hang of this..."
+"text":  "Starting to get the hang of this..."
 
 }
 
 使用外部版本号：ES默认采用递增的整数作为版本号，也可以通过外部自定义整数（long类型）作为版本号，例如时间戳。通过添加参数version\_type=external，可以使用自定义版本号。内部版本号使用的时候，更新或者删除操作需要携带ES索引当前最新的版本号，匹配上了才能成功操作。但是外部版本号使用的时候，可以将版本号更新为指定的值。
 
-
-
 PUT /website/blog/2?version=5&version\_type=external
 
 {
 
-  "title": "My first external blog entry",
+"title": "My first external blog entry",
 
-  "text":  "Starting to get the hang of this..."
+"text":  "Starting to get the hang of this..."
 
 }
 
 原始文档存储（行式存储）
 
+  
 
+
+![](https://pic4.zhimg.com/80/v2-6cda4d6eb078571fe5d7c56e7c6dd107_hd.jpg)
+
+**fdt文件**
+
+文档内容的物理存储文件，由多个chunk组成，Lucene索引文档时，先缓存文档，缓存大于16KB时，就会把文档压缩存储。  
+
+
+![](https://pic3.zhimg.com/80/v2-c9fb74c7a847f4704f7f9b2554c97c22_hd.jpg)
+
+**fdx文件**
+
+文档内容的位置索引，由多个block组成：
+
+* 1024个chunk归为一个block
+* block记录chunk的起始文档ID，以及chunk在fdt中的位置
+ 
+
+![](https://pic4.zhimg.com/80/v2-fc6eca00a128837cd5288fb8f5a56303_hd.jpg)
+
+**fnm文件**
+
+文档元数据信息，包括文档字段的名称、类型、数量等。
+
+**原始文档的查询**
+
+![](https://pic1.zhimg.com/80/v2-aeda0b36ccd362d48647d05086710c38_hd.jpg)
+
+注意问题：lucene对原始文件的存放是行式存储，并且为了提高空间利用率，是多文档一起压缩，因此取文档时需要读入和解压额外文档，因此取文档过程非常依赖CPU以及随机IO。
+
+**相关设置**
+
+压缩方式的设置
+
+原始文档的存储对应\_source字段，是默认开启的，会占用大量的磁盘空间，上面提到的chunk中的文档压缩，ES默认采用的是LZ4，如果想要提高压缩率，可以将设置改成best\_compression。
+
+```
+index.codec: best_compression
+```
+
+特定字段的内容存储
+
+查询的时候，如果想要获取原始字段，需要在\_source中获取，因为所有的字段存储在一起，所以获取完整的文档内容与获取其中某个字段，在资源消耗上几乎相同，只是返回给客户端的时候，减少了一定量的网络IO。
+
+ES提供了特定字段内容存储的设置，在设置mappings的时候可以开启，默认是false。如果你的文档内容很大，而其中某个字段的内容有需要经常获取，可以设置开启，将该字段的内容单独存储
+
+PUT my\_index
+
+{
+
+  "mappings": {
+
+    "\_doc": {
+
+      "properties": {
+
+        "title": {
+
+          "type": "text",
+
+          "store": true 
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
 
