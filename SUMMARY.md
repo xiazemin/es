@@ -27,7 +27,7 @@
 * [Elasticsearch 的 44 条建议](chapter3.md)
   * [创建索引过程](chapter3/section1.md)
   * [Elasticsearch性能优化](chapter3/section2.md)
-  * [section3](chapter3/section3.md)
+  * [原始文档存储](chapter3/section3.md)
   * [section4](chapter3/section4.md)
   * [section5](chapter3/section5.md)
   * [section6](chapter3/section6.md)
