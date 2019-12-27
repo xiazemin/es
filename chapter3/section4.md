@@ -46,7 +46,7 @@ Lucene 索引文件结构主要的分为：词典、倒排表、正向文件、D
 
 ![](https://cdn.ancii.com/article/image/v1/L3/7f/q4/4q73fLUeH6vHx4UXmTexBnuQlTGSxuOADzMMhiO2UABw--nkqpOod3V9b8H1Klf2sRAp6aROrN6O_NX-W28fLOQUs527tvbFpEnZgbyLC_o.jpg "厉害了，ES 如何做到几十亿数据检索 3 秒返回")
 
-注：整理来源于lucene官方:http://lucene.apache.org/core/7\_2\_1/core/org/apache/lucene/codecs/lucene70/package-summary.html\#package.description
+注：整理来源于lucene官方:[http://lucene.apache.org/core/7\_2\_1/core/org/apache/lucene/codecs/lucene70/package-summary.html\#package.description](http://lucene.apache.org/core/7_2_1/core/org/apache/lucene/codecs/lucene70/package-summary.html#package.description)
 
 Lucene 随机三次磁盘读取比较耗时。其中.fdt文件保存数据值损耗空间大，.tim和.doc则需要SSD存储提高随机读写性能。  
 另外一个比较消耗性能的是打分流程，不需要则可屏蔽。
@@ -77,7 +77,7 @@ ES中一个索引由一个或多个lucene索引构成，一个lucene索引由一
 
 2、实际数据存储在HBase中，通过Rowkey查询，如下图。
 
-3、提高索引与检索的性能建议，可参考官方文档（如 https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-indexing-speed.html）。
+3、提高索引与检索的性能建议，可参考官方文档（如 [https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-indexing-speed.html）。](https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-indexing-speed.html）。)
 
 一些细节优化项官方与其他的一些文章都有描述，在此文章中仅提出一些本案例的重点优化项。
 
@@ -109,7 +109,7 @@ ES中一个索引由一个或多个lucene索引构成，一个lucene索引由一
 
 1、关闭不需要字段的doc values。
 
-2、尽量使用keyword替代一些long或者int之类，term查询总比range查询好 \(参考lucene说明http://lucene.apache.org/core/7\_4\_0/core/org/apache/lucene/index/PointValues.html\)。
+2、尽量使用keyword替代一些long或者int之类，term查询总比range查询好 \(参考lucene说明[http://lucene.apache.org/core/7\_4\_0/core/org/apache/lucene/index/PointValues.html\)。](http://lucene.apache.org/core/7_4_0/core/org/apache/lucene/index/PointValues.html%29。)
 
 3、关闭不需要查询字段的\_source功能，不将此存储仅ES中，以节省磁盘空间。
 
@@ -135,152 +135,24 @@ index.max\_result\_window ： 10000
 
 ```
 {
- 
-&
-#
-34
-;mappings
-&
-#
-34
-;: {
- 
-&
-#
-34
-;data
-&
-#
-34
-;: {
- 
-&
-#
-34
-;dynamic
-&
-#
-34
-;: 
-&
-#
-34
-;false
-&
-#
-34
-;,
- 
-&
-#
-34
-;_source
-&
-#
-34
-;: {
- 
-&
-#
-34
-;includes
-&
-#
-34
-;: [
-&
-#
-34
-;XXX
-&
-#
-34
-;] -- 仅将查询结果所需的数据存储仅_source中
+ &#34;mappings&#34;: {
+ &#34;data&#34;: {
+ &#34;dynamic&#34;: &#34;false&#34;,
+ &#34;_source&#34;: {
+ &#34;includes&#34;: [&#34;XXX&#34;] -- 仅将查询结果所需的数据存储仅_source中
  },
- 
-&
-#
-34
-;properties
-&
-#
-34
-;: {
- 
-&
-#
-34
-;state
-&
-#
-34
-;: {
- 
-&
-#
-34
-;type
-&
-#
-34
-;: 
-&
-#
-34
-;keyword
-&
-#
-34
-;, -- 虽然state为int值，但如果不需要做范围查询，尽量使用keyword，因为int需要比keyword增加额外的消耗。
- 
-&
-#
-34
-;doc_values
-&
-#
-34
-;: false -- 关闭不需要字段的doc values功能，仅对需要排序，汇聚功能的字段开启。
+ &#34;properties&#34;: {
+ &#34;state&#34;: {
+ &#34;type&#34;: &#34;keyword&#34;, -- 虽然state为int值，但如果不需要做范围查询，尽量使用keyword，因为int需要比keyword增加额外的消耗。
+ &#34;doc_values&#34;: false -- 关闭不需要字段的doc values功能，仅对需要排序，汇聚功能的字段开启。
  },
- 
-&
-#
-34
-;b
-&
-#
-34
-;: {
- 
-&
-#
-34
-;type
-&
-#
-34
-;: 
-&
-#
-34
-;long
-&
-#
-34
-; -- 使用了范围查询字段，则需要用long或者int之类 （构建类似KD-trees结构）
+ &#34;b&#34;: {
+ &#34;type&#34;: &#34;long&#34; -- 使用了范围查询字段，则需要用long或者int之类 （构建类似KD-trees结构）
  }
  }
  }
  },
- 
-&
-#
-34
-;settings
-&
-#
-34
-;: {......}
+ &#34;settings&#34;: {......}
 }
 ```
 
